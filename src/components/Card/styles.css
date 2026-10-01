@@ -1,0 +1,30 @@
+.card {
+  display: flex;
+  flex-direction: column;
+  width: 400px;
+  min-height: 300px;
+  max-height: fit-content;
+  border: 1px solid black;
+  border-radius: 6px;
+  padding: 30px;
+  color: black;
+  background-color: white;
+  gap: 30px;
+}
+.avatar {
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
+  align-self: center;
+}
+.card_info {
+  display: flex;
+  align-items: center;
+  color: black;
+  font-size: 24px;
+  font-weight: 500;
+}
+.info_title {
+  font-size: 28px;
+  font-weight: bold;
+}
