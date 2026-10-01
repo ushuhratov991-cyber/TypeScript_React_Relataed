@@ -3,6 +3,8 @@ import { useNavigate, Link } from "react-router-dom";
 import Button from "components/Button/Button";
 
 import { PageWrapper, ButtonControl } from "./styles";
+import { ROUTES } from "constants/routes"; 
+
 
 function Clients() {
   const navigate = useNavigate();
@@ -14,9 +16,9 @@ function Clients() {
 
   return (
     <PageWrapper>
-      <Link to="/clients/facebook">Facebook</Link>
-      <Link to="/clients/google">Google</Link>
-      <Link to="/clients/microsoft">Microsoft</Link>
+      <Link to={ROUTES.FACEBOOK}>Facebook</Link>
+      <Link to={ROUTES.GOOGLE}>Google</Link>
+      <Link to={ROUTES.MICRACOFT}>Microsoft</Link>
       <ButtonControl>
         <Button onClick={goBack} name="Go back" />
       </ButtonControl>

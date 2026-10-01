@@ -4,7 +4,7 @@ export interface ROUTES_DATA {
   ABOUT: string;
   LOGIN: string;
   CLIENTS: string;
-  MICRACOFT: string;
+  APPLE: string;
   GOOGLE: string;
   FACEBOOK: string;
   NOT_FOUND: string;
@@ -15,9 +15,9 @@ export const ROUTES: ROUTES_DATA = {
   ABOUT: "/about",
   LOGIN: "/login",
   CLIENTS: "/clients",
-  MICRACOFT: "/clients/micrasoft",
-  GOOGLE: "/clients/google",
-  FACEBOOK: "/clients/facebook",
+  APPLE: "/clients/apple",
+  GOOGLE: "/clients/facebook",
+  FACEBOOK: "/clients/google",
   NOT_FOUND: "*",
 };
 export enum NAVIGATION_MENU_ROUTES {

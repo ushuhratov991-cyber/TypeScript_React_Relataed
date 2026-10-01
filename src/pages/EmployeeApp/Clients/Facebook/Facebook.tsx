@@ -1,5 +1,8 @@
 import { useNavigate } from "react-router-dom";
 
+import { ROUTES } from "constants/routes"; 
+
+
 import Button from "components/Button/Button";
 
 import { Facebook_PageWrapper, ButtonControl } from "./styles";
@@ -8,7 +11,7 @@ function Facebook() {
   const navigate = useNavigate();
 
   const goToHomePage = () => {
-    navigate("/");
+    navigate(ROUTES.HOME);
   };
 
   const goBack = () => {

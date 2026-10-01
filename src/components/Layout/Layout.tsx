@@ -1,4 +1,6 @@
-import {useNavigate} from "react-router-dom"
+import { useNavigate } from "react-router-dom";
+
+import { NAVIGATION_MENU_ROUTES } from "constants/routes";
 
 import {
   LayoutWrapper,
@@ -12,17 +14,17 @@ import {
   FooterLogo,
   FooterLink,
   FooterNavigation,
-  getActiveStyles
+  getActiveStyles,
 } from "./styles";
 
-import {type LayoutProps} from "./types"
+import { type LayoutProps } from "./types";
 
-function Layout({children}: LayoutProps) {
-  const navigate = useNavigate()
+function Layout({ children }: LayoutProps) {
+  const navigate = useNavigate();
 
   const goToHomePage = () => {
-    navigate("/")
-  }
+    navigate("/");
+  };
   return (
     <LayoutWrapper>
       <Header>
@@ -33,21 +35,15 @@ function Layout({children}: LayoutProps) {
           />
         </Logo>
         <NavigationContainer>
-          <HeaderLink style={getActiveStyles} to="/">
-            Home
-          </HeaderLink>
-          <HeaderLink style={getActiveStyles} to="/clients">
-            Clients
-          </HeaderLink>
-          <HeaderLink style={getActiveStyles} to="/contactUs">
-            Contact Us
-          </HeaderLink>
-          <HeaderLink style={getActiveStyles} to="/about">
-            About
-          </HeaderLink>
-          <HeaderLink style={getActiveStyles} to="/login">
-            Login
-          </HeaderLink>
+          {Object.keys(NAVIGATION_MENU_ROUTES).map((key, index) => (
+            <HeaderLink
+              key={key}
+              style={getActiveStyles}
+              to={Object.values(NAVIGATION_MENU_ROUTES)[index]}
+            >
+              {key}
+            </HeaderLink>
+          ))}
         </NavigationContainer>
       </Header>
       <Main>{children}</Main>
@@ -59,11 +55,14 @@ function Layout({children}: LayoutProps) {
           />
         </FooterLogo>
         <FooterNavigation>
-          <FooterLink to="">Home</FooterLink>
-          <FooterLink to="/clients">Clients</FooterLink>
-          <FooterLink to="/contactUs">Contact Us</FooterLink>
-          <FooterLink to="/about">About</FooterLink>
-          <FooterLink to="/login">Login</FooterLink>
+          {Object.keys(NAVIGATION_MENU_ROUTES).map((key, index) => (
+            <FooterLink
+              key={key}
+              to={Object.values(NAVIGATION_MENU_ROUTES)[index]}
+            >
+              {key}
+            </FooterLink>
+          ))}
         </FooterNavigation>
       </Footer>
     </LayoutWrapper>

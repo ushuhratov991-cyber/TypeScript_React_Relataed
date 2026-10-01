@@ -2,6 +2,7 @@ import {Route, Routes, BrowserRouter}  from "react-router-dom"
 
 import GlobalStyles from "styles/GlobalStyles";
 import Layout from "components/Layout/Layout";
+import {ROUTES} from "constants/routes"
 
 //Pages
 import Home from "pages/EmployeeApp/Home/Home";
@@ -23,8 +24,9 @@ import Lesson_08 from "lessons/Lesson_08_Emotion/Lesson_08";
 import Lesson_09 from "lessons/Lesson_09_useEffect/Lesson_09";
 import Lesson_10 from "lessons/Lesson_10_Formik/Lesson_10";
 import Lesson_11 from "lessons/University_Project/Mikhail's_Project/Lesson_11";
+import Lesson_13 from "lessons/Lesson_13/Lesson_13";
 
-//Hiomerks 
+//Homeworks 
 import Homework_07 from "homeworks/homework_07/Homework_07";
 import Homework_09 from "homeworks/homework_09/Homework_09";
 import Homework_10 from "homeworks/homework_10/Homework_10";
@@ -36,14 +38,14 @@ function App() {
       <GlobalStyles />
       <Layout>
         <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="/about" element={<About />} />
-          <Route path="/login" element={<LogIn />} />
-          <Route path="/contactUs" element={<ContactUs />} />
-          <Route path="/clients" element={<Clients />} />
-          <Route path="/clients/facebook" element={<Facebook />} />
-          <Route path="/clients/google" element={<Google />} />
-          <Route path="/clients/microsoft" element={<Microsoft />} />
+          <Route path={ROUTES.HOME} element={<Home />} />
+          <Route path={ROUTES.ABOUT} element={<About />} />
+          <Route path={ROUTES.LOGIN} element={<LogIn />} />
+          <Route path={ROUTES.CONTACT_US} element={<ContactUs />} />
+          <Route path={ROUTES.CLIENTS} element={<Clients />} />
+          <Route path={ROUTES.FACEBOOK} element={<Facebook />} />
+          <Route path={ROUTES.GOOGLE} element={<Google />} />
+          <Route path={ROUTES.MICRACOFT} element={<Microsoft />} />
         </Routes>
         {/* <Home /> */}
 
@@ -55,12 +57,12 @@ function App() {
         {/* <Lesson_10/> */}
         {/* <Lesson_11/> */}
 
-
         {/* Homeworks*/}
         {/* <Homework_07 /> */}
         {/* <Homework_09 /> */}
         {/* <Homework_10 /> */}
       </Layout>
+      {/* <Lesson_13 /> */}
     </BrowserRouter>
   );
 }
