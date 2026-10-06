@@ -1,6 +1,7 @@
 import { useNavigate } from "react-router-dom";
 
 import { NAVIGATION_MENU_ROUTES } from "constants/routes";
+import {v4} from "uuid"
 
 import {
   LayoutWrapper,
@@ -37,7 +38,7 @@ function Layout({ children }: LayoutProps) {
         <NavigationContainer>
           {Object.keys(NAVIGATION_MENU_ROUTES).map((key, index) => (
             <HeaderLink
-              key={key}
+              key={v4()}
               style={getActiveStyles}
               to={Object.values(NAVIGATION_MENU_ROUTES)[index]}
             >
@@ -57,7 +58,7 @@ function Layout({ children }: LayoutProps) {
         <FooterNavigation>
           {Object.keys(NAVIGATION_MENU_ROUTES).map((key, index) => (
             <FooterLink
-              key={key}
+              key={v4()}
               to={Object.values(NAVIGATION_MENU_ROUTES)[index]}
             >
               {key}

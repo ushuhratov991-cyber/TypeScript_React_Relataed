@@ -25,18 +25,18 @@ import Lesson_09 from "lessons/Lesson_09_useEffect/Lesson_09";
 import Lesson_10 from "lessons/Lesson_10_Formik/Lesson_10";
 import Lesson_11 from "lessons/University_Project/Mikhail's_Project/Lesson_11";
 import Lesson_13 from "lessons/Lesson_13/Lesson_13";
-
 //Homeworks 
 import Homework_07 from "homeworks/homework_07/Homework_07";
 import Homework_09 from "homeworks/homework_09/Homework_09";
 import Homework_10 from "homeworks/homework_10/Homework_10";
+import Homework_13 from "homeworks/homework_13/Homework_13";
 
 
 function App() {
   return (
     <BrowserRouter>
       <GlobalStyles />
-      <Layout>
+      {/* <Layout>
         <Routes>
           <Route path={ROUTES.HOME} element={<Home />} />
           <Route path={ROUTES.ABOUT} element={<About />} />
@@ -47,22 +47,22 @@ function App() {
           <Route path={ROUTES.GOOGLE} element={<Google />} />
           <Route path={ROUTES.MICRACOFT} element={<Microsoft />} />
         </Routes>
-        {/* <Home /> */}
+      </Layout> */}
 
-        {/* Lessons */}
-        {/* <Lesson_06 /> */}
-        {/* <Lesson_07 /> */}
-        {/* <Lesson_08 /> */}
-        {/* <Lesson_09 /> */}
-        {/* <Lesson_10/> */}
-        {/* <Lesson_11/> */}
-
-        {/* Homeworks*/}
-        {/* <Homework_07 /> */}
-        {/* <Homework_09 /> */}
-        {/* <Homework_10 /> */}
-      </Layout>
+      {/* Lessons */}
+      {/* <Lesson_06 /> */}
+      {/* <Lesson_07 /> */}
+      {/* <Lesson_08 /> */}
+      {/* <Lesson_09 /> */}
+      {/* <Lesson_10/> */}
+      {/* <Lesson_11/> */}
       {/* <Lesson_13 /> */}
+
+      {/* Homeworks*/}
+      {/* <Homework_07 /> */}
+      {/* <Homework_09 /> */}
+      {/* <Homework_10 /> */}
+      <Homework_13 />
     </BrowserRouter>
   );
 }
