@@ -1,4 +1,5 @@
+// Здесь централизованно хранятся адреса двух страниц приложения.
 export const EMPLOYEE_ROUTES = {
-  CREATE_EMPLOYEE: "/",
-  EMPLOYEES: "/employees",
+  CREATE_EMPLOYEE: "/", // Главная страница показывает форму создания.
+  EMPLOYEES: "/employees", // Этот адрес показывает список сотрудников.
 };

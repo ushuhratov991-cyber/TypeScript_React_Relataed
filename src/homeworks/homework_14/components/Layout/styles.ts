@@ -1,94 +1,110 @@
+// styled подключает Emotion, чтобы создавать CSS-стили прямо из компонентов.
 import styled from "@emotion/styled";
+// NavLink даёт ссылкам маршрутизации класс active для текущего адреса.
 import { NavLink } from "react-router-dom";
 
+// LayoutWrapper — общий фон и вертикальная структура всего приложения.
 export const LayoutWrapper = styled.div`
-  @font-face {
-    font-family: "Lato";
-    font-style: normal;
-    font-weight: 400;
-    font-display: swap;
-    src: url("/fonts/lato-regular.ttf") format("truetype");
-  }
+  display: flex; /* Включает flex-разметку для дочерних блоков. */
+  min-height: 100vh; /* Растягивает приложение минимум на высоту окна. */
+  flex-direction: column; /* Ставит шапку над содержимым. */
+  background: #112233; /* Тёмно-синий фон видимой области макета. */
+  color: #171717; /* Цвет текста по умолчанию для светлых элементов. */
+  font-family: Lato, Arial, sans-serif; /* Основной шрифт с системным запасным. */
 
-  @font-face {
-    font-family: "Lato";
-    font-style: normal;
-    font-weight: 700;
-    font-display: swap;
-    src: url("/fonts/lato-bold.ttf") format("truetype");
-  }
-
-  display: flex;
-  flex-direction: column;
-  flex: 1;
-  min-width: 0;
-  background-color: #112233;
-  color: #1e1e1e;
-  font-family: "Lato", sans-serif;
-
+  /* Наследуем шрифт приложения для обычных полей и кнопок. */
   input,
   button {
     font-family: inherit;
   }
 `;
 
+// Header оформляет верхнюю светлую полосу с логотипом и навигацией.
 export const Header = styled.header`
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 32px;
-  min-height: 120px;
-  padding: 24px 81px;
-  border: 1px solid #000000;
-  background-color: #faf9ff;
-  color: #000000;
+  display: flex; /* Размещает логотип и меню в одной строке. */
+  min-height: 120px; /* Задаёт высоту шапки на широком экране. */
+  align-items: center; /* Выравнивает логотип и ссылки по вертикали. */
+  justify-content: space-between; /* Разносит логотип и меню по краям. */
+  gap: 32px; /* Оставляет промежуток, если элементы переносятся. */
+  padding: 24px clamp(24px, 6.3vw, 81px); /* Делает боковые поля отзывчивыми. */
+  border: 1px solid #000000; /* Добавляет тонкую рамку макета. */
+  background: #faf9ff; /* Светлый почти белый фон шапки. */
+  color: #000000; /* Задаёт чёрный цвет текста внутри шапки. */
 
+  /* Перестраиваем шапку на узком экране. */
   @media (max-width: 700px) {
-    flex-wrap: wrap;
-    gap: 20px;
-    padding: 24px;
+    min-height: 96px; /* Уменьшаем высоту шапки на планшете/телефоне. */
+    flex-wrap: wrap; /* Разрешаем меню перейти на следующую строку. */
+    gap: 16px; /* Сокращаем промежуток между элементами. */
+    padding: 20px 24px; /* Уменьшаем внутренние отступы. */
   }
 `;
 
+// Logo задаёт внешний вид текстового логотипа слева.
 export const Logo = styled.div`
-  flex-shrink: 0;
-  font-size: 16px;
-  font-weight: 700;
-  line-height: 24px;
+  flex-shrink: 0; /* Не позволяет логотипу сжиматься при нехватке ширины. */
+  color: #000000; /* Использует чёрный текст. */
+  font-size: 16px; /* Задаёт размер текста логотипа. */
+  font-weight: 700; /* Делает логотип жирным. */
+  line-height: 24px; /* Стабилизирует высоту строки логотипа. */
 `;
 
+// Navigation располагает навигационные ссылки в строку.
 export const Navigation = styled.nav`
-  display: flex;
-  flex-wrap: wrap;
-  align-items: center;
-  gap: 56px;
+  display: flex; /* Размещает ссылки рядом. */
+  flex-wrap: wrap; /* Разрешает ссылкам переноситься на узком экране. */
+  align-items: center; /* Выравнивает ссылки по вертикали. */
+  gap: 56px; /* Задаёт расстояние между ссылками в макете. */
 
+  /* Сокращаем расстояние между ссылками на небольших экранах. */
   @media (max-width: 700px) {
-    gap: 24px;
+    gap: 24px; /* Уменьшенный промежуток оставляет место для обеих ссылок. */
+  }
+
+  /* На совсем узком экране меню становится ещё компактнее. */
+  @media (max-width: 420px) {
+    gap: 12px; /* Сокращаем расстояние, чтобы меню не переполняло экран. */
   }
 `;
 
+// HeaderLink использует стиль обычной ссылки и выделяет активный маршрут.
 export const HeaderLink = styled(NavLink)`
-  color: #000000;
-  font-size: 28px;
-  font-weight: 400;
-  line-height: 36px;
-  text-decoration: none;
+  color: #000000; /* Цвет ссылок в светлой шапке. */
+  font-size: 28px; /* Размер навигации на широком экране. */
+  font-weight: 400; /* Неактивная ссылка отображается обычным начертанием. */
+  line-height: 36px; /* Высота строки ссылки. */
+  text-decoration: none; /* Убирает стандартное подчёркивание неактивной ссылки. */
 
+  /* React Router ставит класс active совпавшей с адресом ссылке. */
   &.active {
-    font-weight: 700;
-    text-decoration: underline;
-    text-underline-offset: 6px;
+    font-weight: 700; /* Делает текущую страницу заметнее. */
+    text-decoration: underline; /* Подчёркивает ссылку текущей страницы. */
+    text-underline-offset: 6px; /* Отодвигает подчёркивание от текста. */
   }
 
+  /* Видимая рамка показывает клавиатурный фокус. */
+  &:focus-visible {
+    outline: 2px solid #111111; /* Рисует контрастную рамку вокруг сфокусированной ссылки. */
+    outline-offset: 4px; /* Отодвигает рамку от текста. */
+  }
+
+  /* Уменьшаем текст навигации для экранов уже 700 пикселей. */
   @media (max-width: 700px) {
-    font-size: 20px;
-    line-height: 28px;
+    font-size: 20px; /* Уменьшает текст ссылок на планшете. */
+    line-height: 28px; /* Уменьшает высоту строки вместе с текстом. */
+  }
+
+  /* Дополнительно уменьшаем ссылки на узких телефонах. */
+  @media (max-width: 420px) {
+    font-size: 16px; /* Делает ссылку компактной на маленьком телефоне. */
+    line-height: 24px; /* Сохраняет удобную высоту строки на телефоне. */
   }
 `;
 
+// Main занимает свободное место под шапкой и содержит выбранный маршрут.
 export const Main = styled.main`
-  display: flex;
-  flex: 1;
-  min-width: 0;
+  display: flex; /* Даёт дочерней странице flex-контекст. */
+  flex: 1; /* Заполняет свободную высоту окна. */
+  min-width: 0; /* Позволяет содержимому сжиматься без переполнения. */
+  background: #112233; /* Сохраняет тёмный фон под страницами. */
 `;
