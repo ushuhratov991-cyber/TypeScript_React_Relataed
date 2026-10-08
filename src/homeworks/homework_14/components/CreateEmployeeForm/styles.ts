@@ -1,153 +1,55 @@
-// styled из Emotion превращает декларации ниже в React-компоненты с CSS.
 import styled from "@emotion/styled";
+export const EmployeeForm = styled.form`
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+  width: 590px;
+  max-width: 100%;
+  padding: 60px;
+  border-radius: 4px;
+  background: #ffffff;
 
-// Этот тип описывает служебный флаг ошибки, который не попадёт в HTML-атрибут.
-interface FieldInputProps {
-  $hasError: boolean; // true означает, что поле сейчас содержит ошибку валидации.
-}
-
-// Form — белая панель формы создания или изменения сотрудника.
-export const Form = styled.form`
-  display: flex; /* Располагает заголовок, поля и кнопки вертикально. */
-  flex-direction: column; /* Делает основную ось контейнера вертикальной. */
-  justify-content: space-between; /* Разносит секции формы по высоте панели. */
-  gap: 28px; /* Сохраняет минимальные интервалы между блоками. */
-  width: min(100%, 635px); /* Не позволяет панели стать шире макета или родителя. */
-  min-height: 570px; /* Делает форму достаточно высокой, как карточка в макете. */
-  padding: 58px 60px 56px; /* Создаёт свободное место внутри белой панели. */
-  border: 1px solid #d9d9d9; /* Добавляет тонкую границу панели. */
-  border-radius: 0; /* Оставляет квадратные углы, как в Figma. */
-  background: #ffffff; /* Задаёт белую поверхность формы. */
-  color: #111111; /* Задаёт основной цвет текста формы. */
-
-  /* Уменьшаем размеры панели на планшетах. */
-  @media (max-width: 720px) {
-    min-height: 500px; /* Уменьшаем высоту панели на планшете. */
-    padding: 40px 32px; /* Сокращаем внутренние отступы. */
+  label {
+    color: #6f6f6f;
+    line-height: 24px;
   }
 
-  /* Используем более узкие поля на телефоне. */
-  @media (max-width: 420px) {
-    min-height: 450px; /* Не даём панели занимать слишком много экрана. */
-    padding: 30px 24px; /* Оставляем компактные поля на телефоне. */
-  }
-`;
+  input {
+    font-size: 16px;
+    line-height: 24px;
 
-// FormTitle оформляет название текущего действия над формой.
-export const FormTitle = styled.h2`
-  color: #111111; /* Основной цвет заголовка на белой панели. */
-  font-size: 26px; /* Размер заголовка формы. */
-  font-weight: 700; /* Выделяет название формы жирным начертанием. */
-  line-height: 1.25; /* Сохраняет компактную высоту строки. */
-`;
+    &::placeholder {
+      color: #a3a3a3;
+    }
 
-// FormDescription содержит короткое пояснение под заголовком формы.
-export const FormDescription = styled.p`
-  margin-top: 7px; /* Отделяет пояснение от заголовка. */
-  color: #666666; /* Делает пояснение менее контрастным, чем заголовок. */
-  font-size: 14px; /* Задаёт вспомогательный размер текста. */
-  line-height: 1.5; /* Улучшает читаемость многострочной подсказки. */
-`;
-
-// FieldsGrid ставит поля в вертикальный список и задаёт расстояние между ними.
-export const FieldsGrid = styled.div`
-  display: grid; /* Выравнивает набор полей общей сеткой. */
-  grid-template-columns: minmax(0, 1fr); /* Размещает каждое поле отдельной строкой. */
-  gap: 14px; /* Создаёт одинаковое расстояние между полями. */
-`;
-
-// Field группирует label, input и сообщение об ошибке одного поля.
-export const Field = styled.div`
-  display: flex; /* Складывает подпись, ввод и ошибку вертикально. */
-  min-width: 0; /* Позволяет длинному содержимому сжиматься. */
-  flex-direction: column; /* Размещает элементы поля сверху вниз. */
-  gap: 7px; /* Отделяет подпись и ввод друг от друга. */
-`;
-
-// FieldLabel визуально оформляет подпись и связывается с input через htmlFor.
-export const FieldLabel = styled.label`
-  color: #777777; /* Приглушённый цвет подписи поля. */
-  font-size: 14px; /* Компактный размер названия поля. */
-  font-weight: 400; /* Обычное начертание подписи. */
-`;
-
-// FieldInput задаёт внешний вид поля, а $hasError меняет цвет нижней границы.
-export const FieldInput = styled.input<FieldInputProps>`
-  width: 100%; /* Поле занимает всю ширину своего столбца. */
-  height: 42px; /* Задаёт высоту области ввода. */
-  padding: 0; /* Убирает дополнительное смещение текста. */
-  border: 0; /* Убирает стандартную рамку вокруг поля. */
-  border-bottom: 1px solid ${({ $hasError }) => ($hasError ? "#cc0000" : "#cccccc")}; /* Нижняя линия краснеет при ошибке. */
-  border-radius: 0; /* Квадратная форма соответствует макету. */
-  background: #ffffff; /* Фон поля сливается с белой панелью. */
-  color: #111111; /* Цвет введённого текста. */
-  font: inherit; /* Наследование семейства и начертания шрифта. */
-  font-size: 15px; /* Размер вводимого текста. */
-  outline: none; /* Свой фокус ниже заменяет стандартную рамку. */
-  transition: border-color 150ms ease, box-shadow 150ms ease; /* Смягчает переход между обычным и активным полем. */
-
-  &::placeholder {
-    color: #999999; /* Цвет подсказки до ввода значения. */
+    &:focus {
+      outline: 2px solid #1f27f5;
+      outline-offset: 2px;
+    }
   }
 
-  &:focus {
-    border-color: #111111; /* Затемняет нижнюю линию активного поля. */
-    box-shadow: 0 1px 0 #111111; /* Подчёркивает активный input. */
-  }
-`;
+  button {
+    border-radius: 4px;
+    background: #1f27f5;
+    font-weight: 600;
+    line-height: 30px;
 
-// FieldError показывает сообщение Yup под полем ввода.
-export const FieldError = styled.span`
-  color: #cc0000; /* Красный цвет связывает сообщение с ошибочным полем. */
-  font-size: 12px; /* Уменьшенный размер оставляет ошибку под полем. */
-  line-height: 1.4; /* Делает сообщение читаемым, если оно перенесётся. */
-`;
+    &:hover {
+      background: #171dcc;
+    }
 
-// FormActions объединяет кнопки отправки и отмены.
-export const FormActions = styled.div`
-  display: flex; /* Выстраивает кнопки действий в ряд. */
-  flex-wrap: wrap; /* Переносит кнопки, если контейнер узкий. */
-  gap: 12px; /* Оставляет одинаковый зазор между кнопками. */
-`;
-
-// PrimaryButton является главной красной кнопкой Create или Save changes.
-export const PrimaryButton = styled.button`
-  min-height: 64px; /* Делает основное действие заметным и удобным для нажатия. */
-  padding: 0 24px; /* Добавляет боковые поля вокруг надписи. */
-  border: 0; /* Убирает браузерную рамку. */
-  border-radius: 0; /* Оставляет прямоугольную кнопку макета. */
-  background: #cc0000; /* Красный цвет главного действия. */
-  color: #ffffff; /* Белый цвет текста кнопки. */
-  font: inherit; /* Наследует шрифт приложения. */
-  font-size: 18px; /* Размер текста кнопки. */
-  font-weight: 700; /* Делает действие визуально сильнее. */
-  cursor: pointer; /* Показывает интерактивность при наведении. */
-  transition: background 150ms ease, transform 150ms ease; /* Делает hover-переход плавным. */
-
-  &:hover {
-    background: #aa0000; /* Затемняет основную кнопку при наведении. */
+    &:focus-visible {
+      outline: 2px solid #1f27f5;
+      outline-offset: 2px;
+    }
   }
 
-  &:focus-visible {
-    outline: 3px solid rgba(204, 0, 0, 0.3); /* Подсвечивает кнопку при навигации клавиатурой. */
-    outline-offset: 2px; /* Отделяет контур от границы кнопки. */
+  @media (max-width: 600px) {
+    padding: 28px;
   }
 `;
-
-// SecondaryButton отменяет редактирование и оформлен менее заметно.
-export const SecondaryButton = styled.button`
-  min-height: 64px; /* Высота совпадает с основной кнопкой. */
-  padding: 0 20px; /* Внутренние поля вторичного действия. */
-  border: 1px solid #cccccc; /* Тонкая серая граница отличает кнопку от основной. */
-  border-radius: 0; /* Квадратные углы сохраняют стиль макета. */
-  background: #ffffff; /* Белый фон не конкурирует с красной кнопкой. */
-  color: #333333; /* Тёмный текст остаётся читаемым на белом фоне. */
-  font: inherit; /* Использует шрифт всего приложения. */
-  font-size: 15px; /* Умеренный размер текста вторичного действия. */
-  font-weight: 600; /* Чуть подчёркивает название кнопки. */
-  cursor: pointer; /* Показывает, что кнопку можно нажать. */
-
-  &:hover {
-    background: #f2f2f2; /* Показывает наведение на кнопку отмены. */
-  }
+export const InputsContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
 `;

@@ -1,108 +1,53 @@
-// styled нужен, чтобы оформить карточку и её элементы средствами Emotion.
 import styled from "@emotion/styled";
+export const CardWrapper = styled.article`
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+  width: 635px;
+  max-width: 100%;
+  padding: 60px;
+  border-radius: 4px;
+  background: #ffffff;
 
-// Card задаёт белую карточку нужного размера и вертикальное расположение блоков.
-export const Card = styled.article`
-  display: flex; /* Включает flex-раскладку содержимого. */
-  min-height: 570px; /* Высота карточки совпадает с видимой рамкой макета. */
-  flex-direction: column; /* Ставит сведения и кнопки друг под другом. */
-  justify-content: space-between; /* Разносит данные и кнопку к краям карточки. */
-  gap: 30px; /* Сохраняет промежуток, если содержимого станет больше. */
-  width: 100%; /* Заполняет ячейку сетки по ширине. */
-  min-width: 0; /* Разрешает длинным данным переноситься без переполнения. */
-  padding: 58px 60px 56px; /* Внутренние отступы повторяют карточку в макете. */
-  border: 1px solid #d9d9d9; /* Тонко отделяет белую карточку от фона. */
-  background: #ffffff; /* Белый фон карточки. */
-  color: #111111; /* Основной цвет данных внутри карточки. */
+  button {
+    border-radius: 4px;
+    background: #d40000;
+    font-weight: 600;
+    line-height: 30px;
 
-  /* Уменьшаем карточку и внутренние поля на планшетах. */
-  @media (max-width: 720px) {
-    min-height: 480px;
-    padding: 38px 32px;
+    &:hover {
+      background: #b30000;
+    }
+
+    &:focus-visible {
+      outline: 2px solid #d40000;
+      outline-offset: 3px;
+    }
   }
 
-  /* Снижаем минимальную высоту и поля на маленьком экране. */
-  @media (max-width: 420px) {
-    min-height: 420px;
-    padding: 30px 24px;
+  @media (max-width: 600px) {
+    padding: 28px;
   }
 `;
+export const EmployeeInfo = styled.dl`
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  margin: 0;
 
-// CardHeading содержит вспомогательное действие редактирования вверху карточки.
-export const CardHeading = styled.div`
-  display: flex; /* Размещает элемент Edit в верхней строке карточки. */
-  align-items: flex-start; /* Выравнивает кнопку по верхнему краю строки. */
-  justify-content: space-between; /* Разносит элементы строки по горизонтали. */
-  gap: 16px; /* Оставляет промежуток между элементами строки. */
-`;
-
-// EmployeeDetails выводит подписи и значения как список описаний dl/dt/dd.
-export const EmployeeDetails = styled.dl`
-  display: flex; /* Располагает пары «подпись — значение» вертикально. */
-  flex-direction: column; /* Ставит каждый элемент списка на отдельной строке. */
-  gap: 3px; /* Оставляет небольшой промежуток внутри списка данных. */
-  margin: 0; /* Убирает стандартный отступ браузера у dl. */
-  color: #111111; /* Задаёт основной цвет сведений о сотруднике. */
-
-  /* dt — подпись поля, например Name или Age. */
   dt {
-    margin-top: 9px; /* Отделяет текущую подпись от предыдущего значения. */
-    color: #777777; /* Подпись светлее значения и меньше привлекает внимание. */
-    font-size: 14px; /* Компактный размер названия поля. */
-    line-height: 1.3; /* Держит подпись близко к её значению. */
+    color: #6f6f6f;
+    font-size: 16px;
+    line-height: 24px;
   }
 
-  /* dd — значение, связанное с предыдущей подписью. */
   dd {
-    margin: 0; /* Убирает браузерный отступ у значения списка. */
-    font-size: 20px; /* Значение заметнее подписи. */
-    line-height: 1.35; /* Задаёт высоту строки с текстом значения. */
-    overflow-wrap: anywhere; /* Переносит длинные слова внутри карточки. */
-  }
-`;
-
-// CardActions — контейнер для кнопки удаления в нижней части карточки.
-export const CardActions = styled.div`
-  display: flex; /* Располагает действия в одну строку, пока хватает места. */
-  flex-wrap: wrap; /* Переносит действие на следующую строку при нехватке места. */
-  gap: 12px; /* Разделяет кнопки, если их несколько. */
-`;
-
-// ActionButton задаёт общие размеры и доступный клавиатурный фокус кнопок.
-const ActionButton = styled.button`
-  min-height: 56px; /* Делает область нажатия достаточно крупной. */
-  padding: 0 18px; /* Добавляет внутренние поля по горизонтали. */
-  border: 0; /* Убирает стандартную рамку кнопки. */
-  border-radius: 0; /* Сохраняет квадратные углы дизайна. */
-  font: inherit; /* Наследует шрифт контейнера. */
-  font-size: 16px; /* Задаёт читаемый размер надписи. */
-  cursor: pointer; /* Показывает, что элемент интерактивен. */
-
-  /* outline виден при переходе по кнопкам клавиатурой. */
-  &:focus-visible {
-    outline: 3px solid #111111;
-    outline-offset: 3px;
-  }
-`;
-
-// EditButton визуально оформляет переход к редактированию записи.
-export const EditButton = styled(ActionButton)`
-  background: #ffffff; /* Не вводит дополнительный цвет в белую карточку. */
-  color: #111111; /* Оставляет текст действия чёрным. */
-  text-decoration: underline; /* Подчёркивание показывает действие ссылки. */
-
-  &:hover {
-    background: #f1f1f1; /* Подсвечивает кнопку редактирования при наведении. */
-  }
-`;
-
-// DeleteButton выделяет опасное действие красным цветом и растягивается по ширине.
-export const DeleteButton = styled(ActionButton)`
-  width: 100%; /* Растягивает кнопку удаления на всю ширину карточки. */
-  background: #cc0000; /* Красный фон выделяет опасное действие. */
-  color: #ffffff; /* Белый текст контрастирует с красным. */
-
-  &:hover {
-    background: #aa0000; /* Затемняет кнопку удаления при наведении. */
+    margin: 0;
+    color: #1e1e1e;
+    font-size: 28px;
+    font-weight: 700;
+    line-height: 37px;
+    white-space: pre-wrap;
+    overflow-wrap: anywhere;
   }
 `;

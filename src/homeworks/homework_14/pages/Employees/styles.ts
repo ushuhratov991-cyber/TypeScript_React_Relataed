@@ -1,97 +1,55 @@
-// styled создаёт CSS-компоненты, которыми страница пользуется в JSX.
 import styled from "@emotion/styled";
+export const PageWrapper = styled.section`
+  display: flex;
+  flex: 1;
+  min-width: 0;
+  flex-direction: column;
+  align-items: center;
+  gap: 125px;
+  padding: 84px 50px 54px 55px;
 
-// Page задаёт внутренние отступы страницы со списком сотрудников.
-export const Page = styled.section`
-  display: flex; /* Располагает сетку и кнопку удаления друг под другом. */
-  width: 100%; /* Растягивает страницу по ширине Main. */
-  min-height: 100%; /* Заполняет доступную высоту основной области. */
-  flex-direction: column; /* Ставит карточки над кнопкой очистки. */
-  align-items: flex-start; /* Выравнивает содержимое по левому краю. */
-  padding: 80px clamp(24px, 6.3vw, 81px) 64px; /* Отступы приближены к макету. */
-
-  /* Сокращаем внешние поля на планшетах и телефонах. */
   @media (max-width: 700px) {
-    padding: 44px 24px 40px; /* Уменьшаем расстояние от краёв экрана. */
-  }
-
-  /* Оставляем больше полезной ширины на узком телефоне. */
-  @media (max-width: 420px) {
-    padding: 28px 16px 32px; /* Ещё уменьшаем внешние отступы на телефоне. */
+    gap: 40px;
+    padding: 40px 20px;
   }
 `;
+export const CardsContainer = styled.div`
+  display: flex;
+  width: 100%;
+  flex-wrap: wrap;
+  align-items: flex-start;
+  justify-content: center;
+  gap: 65px;
 
-// EmployeeGrid строит адаптивную сетку карточек сотрудников.
-export const EmployeeGrid = styled.div`
-  display: grid; /* Включает двухмерную сетку карточек. */
-  width: 100%; /* Использует всю ширину страницы. */
-  grid-template-columns: repeat(2, minmax(0, 635px)); /* Две колонки, каждая до ширины макета. */
-  justify-content: start; /* Начинает сетку от левого края. */
-  align-items: stretch; /* Растягивает карточки до общей высоты строки. */
-  gap: clamp(24px, 4vw, 60px); /* Подбирает промежуток в зависимости от ширины. */
-
-  /* На средних экранах делим доступную ширину между двумя колонками. */
-  @media (max-width: 1000px) {
-    grid-template-columns: repeat(2, minmax(0, 1fr)); /* Равные колонки без фиксированной ширины. */
-  }
-
-  /* На телефоне показываем карточки вертикальным списком. */
-  @media (max-width: 680px) {
-    grid-template-columns: minmax(0, 1fr); /* Одна колонка предотвращает сжатие карточки. */
+  @media (max-width: 700px) {
+    gap: 24px;
   }
 `;
+export const ButtonControl = styled.div`
+  width: 700px;
+  max-width: 100%;
 
-// RemoveAllButton удаляет все записи сразу при нажатии.
-export const RemoveAllButton = styled.button`
-  width: min(100%, 535px); /* Не шире доступного контейнера и размера макета. */
-  min-height: 70px; /* Делает крупную кнопку удобной для нажатия. */
-  margin-top: 48px; /* Отделяет её от карточек. */
-  padding: 12px 24px; /* Создаёт внутренние отступы текста. */
-  border: 0; /* Убирает стандартную рамку браузера. */
-  border-radius: 0; /* Сохраняет квадратные углы макета. */
-  background: #cc0000; /* Красный цвет действия удаления. */
-  color: #ffffff; /* Белый текст контрастирует с красным фоном. */
-  font: inherit; /* Наследует семейство шрифта приложения. */
-  font-size: 18px; /* Задаёт размер надписи. */
-  cursor: pointer; /* Показывает, что кнопку можно нажать. */
+  button {
+    width: 100%;
+    border-radius: 4px;
+    background: #d40000;
+    font-weight: 600;
+    line-height: 30px;
 
-  /* Затемняем кнопку, когда указатель находится над ней. */
-  &:hover {
-    background: #aa0000; /* Затемняем фон при наведении. */
-  }
+    &:hover {
+      background: #b30000;
+    }
 
-  /* Показываем фокус при управлении с клавиатуры. */
-  &:focus-visible {
-    outline: 3px solid #ffffff; /* Белый контур заметен на тёмном фоне страницы. */
-    outline-offset: 3px; /* Отодвигаем контур от края кнопки. */
+    &:focus-visible {
+      outline: 2px solid #d40000;
+      outline-offset: 3px;
+    }
   }
 `;
-
-// EmptyState отображается, когда ещё нет ни одной карточки.
-export const EmptyState = styled.div`
-  display: flex; /* Включает центрирование заголовка и подсказки. */
-  width: min(100%, 635px); /* Ограничивает ширину сообщения шириной карточки. */
-  min-height: 300px; /* Сохраняет заметное пустое состояние. */
-  flex-direction: column; /* Ставит заголовок над текстом. */
-  align-items: center; /* Центрирует дочерние элементы по горизонтали. */
-  justify-content: center; /* Центрирует содержимое по вертикали. */
-  padding: 32px; /* Не даёт тексту касаться краёв. */
-  border: 1px solid #ffffff; /* Добавляет светлую границу белого блока. */
-  background: #ffffff; /* Делает сообщение читаемым на тёмном фоне. */
-  text-align: center; /* Выравнивает текст по центру. */
-
-  /* Оформление абзаца-подсказки внутри пустого состояния. */
-  p {
-    margin-top: 8px; /* Отделяет пояснение от заголовка пустого состояния. */
-    color: #666666; /* Делает пояснение менее заметным, чем заголовок. */
-    font-size: 16px; /* Сохраняет читаемый размер текста. */
-    line-height: 1.5; /* Увеличивает межстрочный интервал для читабельности. */
-  }
-`;
-
-// EmptyStateTitle визуально выделяет заголовок сообщения об отсутствии записей.
-export const EmptyStateTitle = styled.h2`
-  color: #111111; /* Использует основной текстовый цвет на белой панели. */
-  font-size: 22px; /* Выделяет заголовок относительно подсказки. */
-  font-weight: 700; /* Делает заголовок полужирным. */
+export const EmptyText = styled.p`
+  margin: 0;
+  color: #ffffff;
+  font-size: 24px;
+  line-height: 36px;
+  text-align: center;
 `;

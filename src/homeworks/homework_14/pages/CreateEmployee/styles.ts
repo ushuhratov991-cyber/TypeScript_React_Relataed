@@ -1,29 +1,13 @@
-// styled позволяет задать визуальные правила страницы через Emotion.
 import styled from "@emotion/styled";
+export const PageWrapper = styled.section`
+  display: flex;
+  flex: 1;
+  min-width: 0;
+  justify-content: center;
+  align-items: flex-start;
+  padding: 118px 40px 80px;
 
-// Page создаёт область страницы формы и задаёт отступы от краёв экрана.
-export const Page = styled.section`
-  display: flex; /* Включает flex-разметку дочернего содержимого. */
-  width: 100%; /* Растягивает страницу по ширине основного контейнера. */
-  min-height: 100%; /* Заполняет свободную высоту приложения. */
-  flex-direction: column; /* Ставит секции вертикально. */
-  align-items: center; /* Центрирует форму на широком экране. */
-  padding: 80px clamp(24px, 6.3vw, 81px) 64px; /* Отступы задают положение формы. */
-
-  /* Уменьшаем поля на экранах телефона и планшета. */
   @media (max-width: 700px) {
-    padding: 44px 24px 40px; /* Сокращаем боковые и вертикальные поля на планшете. */
+    padding: 40px 20px;
   }
-
-  /* Оставляем больше рабочей ширины на маленьком телефоне. */
-  @media (max-width: 420px) {
-    padding: 28px 16px 32px; /* Экономим ширину и место на маленьком экране. */
-  }
-`;
-
-// PageContent задаёт ширину и горизонтальное положение формы.
-export const PageContent = styled.div`
-  display: flex; /* Создаёт flex-контейнер для формы. */
-  width: 100%; /* Позволяет форме использовать доступную ширину. */
-  justify-content: center; /* Центрирует форму внутри страницы. */
 `;
