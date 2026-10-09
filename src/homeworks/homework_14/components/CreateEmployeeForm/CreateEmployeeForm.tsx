@@ -12,7 +12,7 @@ function CreateEmployeeForm() {
     initialValues: {
       [EMPLOYEE_FORM_NAMES.NAME]: "",
       [EMPLOYEE_FORM_NAMES.SURNAME]: "",
-      [EMPLOYEE_FORM_NAMES.AGE]: "",
+      [EMPLOYEE_FORM_NAMES.AGE]: 0,
       [EMPLOYEE_FORM_NAMES.JOB_POSITION]: "",
     },
     validationSchema,
@@ -54,7 +54,7 @@ function CreateEmployeeForm() {
           name={EMPLOYEE_FORM_NAMES.AGE}
           label="Age*"
           placeholder="Write down Age here..."
-          type="text"
+          type="number"
           value={formik.values.age}
           onChange={formik.handleChange}
           error={formik.errors.age}

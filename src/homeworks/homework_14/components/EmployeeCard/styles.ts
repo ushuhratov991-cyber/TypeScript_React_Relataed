@@ -29,25 +29,25 @@ export const CardWrapper = styled.article`
     padding: 28px;
   }
 `;
-export const EmployeeInfo = styled.dl`
+export const EmployeeInfo = styled.div`
   display: flex;
   flex-direction: column;
   gap: 4px;
   margin: 0;
+`;
 
-  dt {
-    color: #6f6f6f;
-    font-size: 16px;
-    line-height: 24px;
-  }
+export const InfoLabel = styled.div`
+  color: #6f6f6f;
+  font-size: 16px;
+  line-height: 24px;
+`;
 
-  dd {
-    margin: 0;
-    color: #1e1e1e;
-    font-size: 28px;
-    font-weight: 700;
-    line-height: 37px;
-    white-space: pre-wrap;
-    overflow-wrap: anywhere;
-  }
+export const InfoValue = styled.p`
+  margin: 0;
+  color: #1e1e1e;
+  font-size: 28px;
+  font-weight: 700;
+  line-height: 37px;
+  white-space: pre-wrap;
+  overflow-wrap: anywhere;
 `;

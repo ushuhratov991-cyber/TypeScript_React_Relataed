@@ -2,28 +2,28 @@ import { useContext } from "react";
 import Button from "components/Button/Button";
 import { EmployeesContext } from "../../context";
 import { type EmployeeCardProps } from "./types";
-import { CardWrapper, EmployeeInfo } from "./styles";
+import { CardWrapper, EmployeeInfo, InfoLabel, InfoValue } from "./styles";
 function EmployeeCard({ employee }: EmployeeCardProps) {
   const { deleteEmployee } = useContext(EmployeesContext);
 
   return (
     <CardWrapper>
       <EmployeeInfo>
-        <dt>Name</dt>
+        <InfoLabel>Name</InfoLabel>
 
-        <dd>{employee.name}</dd>
+        <InfoValue>{employee.name}</InfoValue>
 
-        <dt>Surname</dt>
+        <InfoLabel>Surname</InfoLabel>
 
-        <dd>{employee.surname}</dd>
+        <InfoValue>{employee.surname}</InfoValue>
 
-        <dt>Age</dt>
+        <InfoLabel>Age</InfoLabel>
 
-        <dd>{employee.age}</dd>
+        <InfoValue>{employee.age}</InfoValue>
 
-        <dt>Job Position</dt>
+        <InfoLabel>Job Position</InfoLabel>
 
-        <dd>{employee.jobPosition || "Not specified"}</dd>
+        <InfoValue>{employee.jobPosition || "Not specified"}</InfoValue>
       </EmployeeInfo>
 
       <Button name="Delete" isRed onClick={() => deleteEmployee(employee.id)} />

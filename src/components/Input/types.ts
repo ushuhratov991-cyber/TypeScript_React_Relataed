@@ -3,11 +3,11 @@ import { type ChangeEvent } from "react";
 export interface InputProps {
   id: string;
   name: string;
-  type?: string;
-  placeholder: string;
+  type?: string ;
+  placeholder: string | number;
   label: string;
   error?: undefined | string;
   disabled?: boolean;
   onChange?: (event: ChangeEvent<HTMLInputElement>) => void;
-  value?: string;
+  value?: string | number;
 }

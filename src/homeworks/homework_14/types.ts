@@ -1,7 +1,7 @@
 export interface EmployeeFormValues {
   name: string;
   surname: string;
-  age: string;
+  age: number ;
   jobPosition: string;
 }
 export interface Employee extends EmployeeFormValues {
