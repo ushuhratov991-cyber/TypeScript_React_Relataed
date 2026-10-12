@@ -14,7 +14,7 @@ export interface WeatherData extends WeatherResponse {
 
 export interface WeatherError {
   cod: number | string;
-  errorMessage: string;
+  message: string;
 }
 
 export interface WeatherContextData {
